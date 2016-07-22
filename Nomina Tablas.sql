@@ -451,7 +451,7 @@ CREATE TABLE IF NOT EXISTS `vacacioncargadadeduccion`
 );
 
 #######################
-# 1.27 CREATE TABLE vacacionprocesada
+# 1.31 CREATE TABLE vacacionprocesada
 #######################
 CREATE TABLE IF NOT EXISTS `vacacionprocesada`
 (
@@ -463,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesada`
 	PRiMARY KEY(numero)
 );
 #######################
-# 1.29 CREATE TABLE vacacionprocesadadetalle
+# 1.32 CREATE TABLE vacacionprocesadadetalle
 #######################
 CREATE TABLE IF NOT EXISTS `vacacionprocesadadetalle`
 (
@@ -476,7 +476,7 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesadadetalle`
 	PRiMARY KEY(numero)
 );
 #######################
-# 1.30 CREATE TABLE vacacionprocesadadeduccion
+# 1.33 CREATE TABLE vacacionprocesadadeduccion
 #######################
 CREATE TABLE IF NOT EXISTS `vacacionprocesadadeduccion`
 (
@@ -488,6 +488,7 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesadadeduccion`
     monto           DECIMAL(10,2) NOT NULL,
 	PRiMARY KEY(numero,ced_empleado,cod_deduccion)
 );
+
 /*
 
 #########################################################################################
