@@ -403,9 +403,9 @@ CREATE TABLE IF NOT EXISTS `anticipotemp`
 	PRiMARY KEY(cedula)
 );
 #######################
-# 1.27 CREATE TABLE vacacion
+# 1.27 CREATE TABLE vacacioncargada
 #######################
-CREATE TABLE IF NOT EXISTS `vacacion`
+CREATE TABLE IF NOT EXISTS `vacacioncargada`
 (
 	numero 		    INT(10)		    NOT NULL AUTO_INCREMENT,
 	descripcion 	CHAR(250)	    NOT NULL,
@@ -424,9 +424,9 @@ CREATE TABLE IF NOT EXISTS `vacaciondeducctemp`
 	PRiMARY KEY(cod_deduccion)
 );
 #######################
-# 1.29 CREATE TABLE vacaciondetalle
+# 1.29 CREATE TABLE vacacioncargadadetalle
 #######################
-CREATE TABLE IF NOT EXISTS `vacaciondetalle`
+CREATE TABLE IF NOT EXISTS `vacacioncargadadetalle`
 (
 	numero 		    INT(10)		  NOT NULL,
 	ced_empleado 	CHAR(10)	  NOT NULL,
@@ -437,9 +437,9 @@ CREATE TABLE IF NOT EXISTS `vacaciondetalle`
 	PRiMARY KEY(numero)
 );
 #######################
-# 1.30 CREATE TABLE vacaciondeduccion
+# 1.30 CREATE TABLE vacacioncargadadeduccion
 #######################
-CREATE TABLE IF NOT EXISTS `vacaciondeduccion`
+CREATE TABLE IF NOT EXISTS `vacacioncargadadeduccion`
 (
     numero 		    INT(10)		  NOT NULL AUTO_INCREMENT,
     ced_empleado    CHAR(10)      NOT NULL,
@@ -450,6 +450,44 @@ CREATE TABLE IF NOT EXISTS `vacaciondeduccion`
 	PRiMARY KEY(numero,ced_empleado,cod_deduccion)
 );
 
+#######################
+# 1.27 CREATE TABLE vacacionprocesada
+#######################
+CREATE TABLE IF NOT EXISTS `vacacionprocesada`
+(
+	numero 		    INT(10)		    NOT NULL AUTO_INCREMENT,
+	descripcion 	CHAR(250)	    NOT NULL,
+	area 			CHAR(10)	    NOT NULL,
+	fecha_pago 		DATE  			NOT NULL,
+	fecha_creac     DATE 			NOT NULL,		
+	PRiMARY KEY(numero)
+);
+#######################
+# 1.29 CREATE TABLE vacacionprocesadadetalle
+#######################
+CREATE TABLE IF NOT EXISTS `vacacionprocesadadetalle`
+(
+	numero 		    INT(10)		  NOT NULL,
+	ced_empleado 	CHAR(10)	  NOT NULL,
+	dias_bonovac	INT(10)	      NOT NULL,
+    dias_ajuste     INT(10)       NOT NULL,
+	monto_bono      DECIMAL(10,2) NOT NULL,
+	monto_ajuste    DECIMAL(10,2) NOT NULL,
+	PRiMARY KEY(numero)
+);
+#######################
+# 1.30 CREATE TABLE vacacionprocesadadeduccion
+#######################
+CREATE TABLE IF NOT EXISTS `vacacionprocesadadeduccion`
+(
+    numero 		    INT(10)		  NOT NULL AUTO_INCREMENT,
+    ced_empleado    CHAR(10)      NOT NULL,
+	cod_deduccion 	CHAR(10)	  NOT NULL AUTO_INCREMENT,
+    descripcion     CHAR(250)     NOT NULL,
+	cantidad    	CHAR(250)	  NOT NULL,
+    monto           DECIMAL(10,2) NOT NULL,
+	PRiMARY KEY(numero,ced_empleado,cod_deduccion)
+);
 /*
 
 #########################################################################################
