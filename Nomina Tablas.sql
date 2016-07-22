@@ -441,9 +441,9 @@ CREATE TABLE IF NOT EXISTS `vacacioncargadadetalle`
 #######################
 CREATE TABLE IF NOT EXISTS `vacacioncargadadeduccion`
 (
-    numero 		    INT(10)		  NOT NULL AUTO_INCREMENT,
+    numero 		    INT(10)		  NOT NULL,
     ced_empleado    CHAR(10)      NOT NULL,
-	cod_deduccion 	CHAR(10)	  NOT NULL AUTO_INCREMENT,
+	cod_deduccion 	CHAR(10)	  NOT NULL,
     descripcion     CHAR(250)     NOT NULL,
 	cantidad    	CHAR(250)	  NOT NULL,
     monto           DECIMAL(10,2) NOT NULL,
