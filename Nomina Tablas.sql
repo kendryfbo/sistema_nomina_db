@@ -7,36 +7,36 @@ USE `nomina`;
 
 CREATE TABLE IF NOT EXISTS `empleado`
 (
-	cedula				CHAR(10) 		NOT NULL,
-	nombres			    CHAR(50)		NOT NULL,
-	apellidos			CHAR(50)		NOT NULL,
-	rif				    CHAR(50)		NULL,
-	fechanac			DATE 			NOT NULL,
-	lugarnac			CHAR(50)		NOT NULL,
-	email				CHAR(50)		NOT NULL,
-	edocivil			CHAR(50)		NOT NULL,
-	numhijos			INT(10)			NULL,
-	direccion			CHAR(50)		NULL,
-	tlf1				CHAR(50)		NULL,
-	tlf2				CHAR(50)		NULL,
-	nivelacad			CHAR(50)		NULL,
-	espec 				CHAR(50)		NULL,	# especialidad
-	nivelsup 			TINYINT(1) 		NULL DEFAULT 0,	# estudios nivel superior
-	titulo 				CHAR(50)		NULL,	# titulo obtenido
-	cod_area			CHAR(10) 		NOT NULL,   # LLAVE FORANEA area.codigo 
-	cod_clasif			CHAR(10) 		NOT NULL,	# LLAVE FORANEA clasif.codigo
-	nivel 				CHAR(50) 		NULL,	# pre-escolar, basico(1-6),basico(7-9),diversificado
-	horas 				INT(10) 		NULL,	# horas semanales
-	salariohora			DECIMAL(10,2)   NULL DEFAULT 1,
-	salariodia			DECIMAL(10,2)	NOT NULL DEFAULT 1,
-	salariasem			DECIMAL(10,2)	NOT NULL DEFAULT 1,
-	salariomes			DECIMAL(10,2)	NOT NULL DEFAULT 1,
-	contrato 			CHAR(50) 		NOT NULL,	# determinado o indeterminado
-	fecha_ingeduc 		DATE 	 		NULL,
-	fecha_ingeducpriv	DATE 	 		NULL,
-	fecha_ing 			DATE 	 		NULL,
-	status				CHAR(50)		NOT NULL, 	# Activo, inactivo, vacaciones, jubilado, reposo
-	antiguedad			INT(10)			NULL,
+	cedula						CHAR(10) 			NOT NULL,
+	nombres			  		CHAR(50)			NOT NULL,
+	apellidos					CHAR(50)			NOT NULL,
+	rif				    		CHAR(50)			NULL,
+	fechanac					DATE 					NOT NULL,
+	lugarnac					CHAR(50)			NOT NULL,
+	email				  		CHAR(50)			NOT NULL,
+	edocivil					CHAR(50)			NOT NULL,
+	numhijos					INT(10)				NULL,
+	direccion					CHAR(50)			NULL,
+	tlf1				  		CHAR(50)			NULL,
+	tlf2				  		CHAR(50)			NULL,
+	nivelacad					CHAR(50)			NULL,
+	espec 						CHAR(50)			NULL,	# especialidad
+	nivelsup 					TINYINT(1) 		NULL DEFAULT 0,	# estudios nivel superior
+	titulo 						CHAR(50)			NULL,	# titulo obtenido
+	cod_area					CHAR(10) 			NOT NULL,   # LLAVE FORANEA area.codigo
+	cod_clasif	  		CHAR(10) 			NOT NULL,	# LLAVE FORANEA clasif.codigo
+	nivel 						CHAR(50) 			NULL,	# pre-escolar, basico(1-6),basico(7-9),diversificado
+	horas 						INT(10) 			NULL,	# horas semanales
+	salariohora				DECIMAL(10,2) NULL DEFAULT 1,
+	salariodia				DECIMAL(10,2)	NOT NULL DEFAULT 1,
+	salariasem				DECIMAL(10,2)	NOT NULL DEFAULT 1,
+	salariomes				DECIMAL(10,2)	NOT NULL DEFAULT 1,
+	contrato 					CHAR(50) 			NOT NULL,	# determinado o indeterminado
+	fecha_ingeduc 		DATE 	 				NULL,
+	fecha_ingeducpriv	DATE 	 				NULL,
+	fecha_ing 				DATE 	 				NULL,
+	status						CHAR(50)			NOT NULL, 	# Activo, inactivo, vacaciones, jubilado, reposo
+	antiguedad				INT(10)				NULL,
 	PRIMARY KEY (cedula)
 );
 
@@ -45,10 +45,10 @@ CREATE TABLE IF NOT EXISTS `empleado`
 #######################
 CREATE TABLE IF NOT EXISTS `area`
 (
-	codigo 			CHAR(10) 	NOT NULL,
-	descripcion 	CHAR(50)	NOT NULL,
+	codigo 			CHAR(10) 		NOT NULL,
+	descripcion CHAR(50)		NOT NULL,
 	activo 			TINYINT(1)  NOT NULL DEFAULT 0,
-	fechacreac 		DATE 		NOT NULL,	
+	fechacreac 	DATE 				NOT NULL,
 	PRIMARY KEY (codigo)
 );
 #######################
@@ -56,13 +56,13 @@ CREATE TABLE IF NOT EXISTS `area`
 #######################
 CREATE TABLE IF NOT EXISTS `clasificacion`
 (
-	codigo 			CHAR(10) 		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,
-	cod_area		CHAR(10)		NOT NULL,		#LLAVE FORANEA campo.codigo
-	formapago		CHAR(50)		NOT NULL,		# x hora, x dia, x semana, x mes
-	valor			DECIMAL(10,2)	NOT NULL,
+	codigo 			CHAR(10) 			NOT NULL,
+	descripcion	CHAR(100)			NOT NULL,
+	cod_area		CHAR(10)			NOT NULL,		#LLAVE FORANEA campo.codigo
+	formapago		CHAR(50)			NOT NULL,		# x hora, x dia, x semana, x mes
+	valor				DECIMAL(10,2)	NOT NULL,
 	activo 			TINYINT(1)		NOT NULL DEFAULT 0,
-	fechacreac 		DATE 			NOT NULL,
+	fechacreac 	DATE 					NOT NULL,
 	PRIMARY KEY (codigo)
 );
 
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `asignacionconcepto`
 CREATE TABLE IF NOT EXISTS `deduccionemp`
 (
 	ced_emp		    CHAR(50)		NOT NULL,
-	cod_deduccion 	CHAR(10)		NOT NULL,	
+	cod_deduccion 	CHAR(10)		NOT NULL,
 	tipo 			CHAR(50)		NOT NULL,				# fija o unica
 	cantidad		INT(10)			NOT NULL DEFAULT 1,
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `asignacionemp`
 	ced_emp		    CHAR(50)		NOT NULL,
 	cod_asignacion 	CHAR(10)		NOT NULL,
 	tipo 			CHAR(50)		NOT NULL,
-	cantidad		INT(10)			NOT NULL DEFAULT 1,	
+	cantidad		INT(10)			NOT NULL DEFAULT 1,
 	PRiMARY KEY(cod_asignacion,ced_emp)
 );
 
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `nominamodel`
 	asignac_porc	INT (10)		NOT NULL DEFAULT 100,		# porcentaje de asignaciones a cancelar
 	asignaciones 	TINYINT(1) 		NOT NULL DEFAULT 0,
 	PRIMARY KEY (codigo)
-	
+
 );
 
 #######################
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `nominacargada`
 	porc_salario 	DECIMAL(10,2) 	NOT NULL,
 	porc_deduccion	DECIMAL(10,2) 	NOT NULL,
 	porc_asignacion DECIMAL(10,2) 	NOT NULL,
-	dias 			INT(10)			NOT NULL DEFAULT 1, 	
+	dias 			INT(10)			NOT NULL DEFAULT 1,
 	cod_usuario		CHAR(10) 		NOT NULL,
 	fecha_creac		DATE 			NOT NULL,
 	PRIMARY KEY (numero)
@@ -167,9 +167,9 @@ CREATE TABLE IF NOT EXISTS `nominacargadadetalle`
 (
 	numero			INT(10)			NOT NULL,			# Numero de la nomina
 	ced_emp 		CHAR(10)		NOT NULL, 			# id Empleado
-	salariogeneral	DECIMAL(10,2) 	NOT NULL DEFAULT 0,	
+	salariogeneral	DECIMAL(10,2) 	NOT NULL DEFAULT 0,
 	salario			DECIMAL(10,2) 	NOT NULL DEFAULT 0,
-	
+
 	PRIMARY KEY (numero,ced_emp)
 );
 
@@ -181,8 +181,8 @@ CREATE TABLE IF NOT EXISTS `deduccioncargada`
 	numero			INT(10)			NOT NULL,
 	cod_deduc 		CHAR(10)		NOT NULL,
 	ced_emp		    CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,	
-	cantidad		INT(10)			NOT NULL DEFAULT 1,	
+	descripcion		CHAR(100)		NOT NULL,
+	cantidad		INT(10)			NOT NULL DEFAULT 1,
 	valor			DECIMAL(10,2)		NOT NULL,
 	PRIMARY KEY(numero,cod_deduc,ced_emp)
 );
@@ -195,9 +195,9 @@ CREATE TABLE IF NOT EXISTS `asignacioncargada`
 	numero			INT(10)			NOT NULL,
 	cod_asign 		CHAR(10)		NOT NULL,
 	ced_emp		    CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,	
+	descripcion		CHAR(100)		NOT NULL,
 	prima 			TINYINT(1)		NOT NULL DEFAULT 0,
-	cantidad		INT(10)			NOT NULL DEFAULT 1,	
+	cantidad		INT(10)			NOT NULL DEFAULT 1,
 	valor			DECIMAL(10,2)	NOT NULL,
 	PRIMARY KEY(numero,cod_asign,ced_emp)
 );
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `nominaprocesada`
 	porc_salario 	DECIMAL(10,2) 	NOT NULL,
 	porc_deduccion	DECIMAL(10,2) 	NOT NULL,
 	porc_asignacion DECIMAL(10,2) 	NOT NULL,
-	dias 			INT(10)			NOT NULL DEFAULT 1, 	
+	dias 			INT(10)			NOT NULL DEFAULT 1,
 	cod_usuario		CHAR(10) 		NOT NULL,
 	fecha_creac		DATE 			NOT NULL,
 	PRIMARY KEY (numero)
@@ -227,9 +227,9 @@ CREATE TABLE IF NOT EXISTS `nominaprocesadaemp`
 (
 	numero			INT(10)			NOT NULL,			# Numero de la nomina
 	ced_emp 		CHAR(10)		NOT NULL, 			# id Empleado
-	salariogeneral	DECIMAL(10,2) 	NOT NULL DEFAULT 0,	
+	salariogeneral	DECIMAL(10,2) 	NOT NULL DEFAULT 0,
 	salario			DECIMAL(10,2) 	NOT NULL DEFAULT 0,
-	
+
 	PRIMARY KEY (numero,ced_emp)
 );
 
@@ -241,8 +241,8 @@ CREATE TABLE IF NOT EXISTS `deduccionprocesada`
 	numero			INT(10)			NOT NULL,
 	cod_deduc 		CHAR(10)		NOT NULL,
 	ced_emp		    CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,	
-	cantidad		INT(10)			NOT NULL DEFAULT 1,	
+	descripcion		CHAR(100)		NOT NULL,
+	cantidad		INT(10)			NOT NULL DEFAULT 1,
 	valor			DECIMAL(10,2)	NOT NULL,
 	PRIMARY KEY(numero,cod_deduc,ced_emp)
 );
@@ -255,9 +255,9 @@ CREATE TABLE IF NOT EXISTS `asignacionprocesada`
 	numero			INT(10)			NOT NULL,
 	cod_asign 		CHAR(10)		NOT NULL,
 	ced_emp		    CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,	
+	descripcion		CHAR(100)		NOT NULL,
 	prima 			TINYINT(1)		NOT NULL DEFAULT 0,
-	cantidad		INT(10)			NOT NULL DEFAULT 1,	
+	cantidad		INT(10)			NOT NULL DEFAULT 1,
 	valor			DECIMAL(10,2)		NOT NULL,
 	PRIMARY KEY(numero,cod_asign,ced_emp)
 );
@@ -284,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `usuario`
 	cod_perfil	CHAR(10)	NOT NULL,		# LLAVE FORANEA usuarioperfil.codigo
 	activo 		TINYINT(1)	NOT NULL,
 	fechacreac 	DATE 		NOT NULL,
-	PRIMARY KEY (user)	
+	PRIMARY KEY (user)
 );
 
 #######################
@@ -304,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `usuarioperfil`
 	perfiles		TINYINT(1)	NOT NULL,
 	activo 			TINYINT(1)	NOT NULL,
 	fechacreac 		DATE 		NOT NULL,
-	PRIMARY KEY (codigo)	
+	PRIMARY KEY (codigo)
 );
 
 #######################
@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `empresa`
 	cedula 			CHAR(20)	NULL,
 	logo			CHAR(50) 	NOT NULL,
 	mensaje		    CHAR(200)	NULL,
-	PRIMARY KEY (codigo)	
+	PRIMARY KEY (codigo)
 );
 
 #######################
@@ -381,13 +381,13 @@ CREATE TABLE IF NOT EXISTS `anticipo`
 	porcentaje 	DECIMAL(10,2)	NULL,
 	fecha 		DATE 			NOT NULL,
 	PRIMARY KEY(id)
-); 
+);
 #######################
 # 1.26 CREATE TABLE detalleanticipo
 #######################
 CREATE TABLE IF NOT EXISTS `anticipodetalle`
 (
-	id 			    INT(10)		    NOT NULL, 
+	id 			    INT(10)		    NOT NULL,
 	cedula 			CHAR(10)		NOT NULL,
 	monto 			DECIMAL(10,2)	NOT NULL,
 	procesado 		TINYINT(1) 		NOT NULL DEFAULT 0;
@@ -411,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `vacacioncargada`
 	descripcion 	CHAR(250)	    NOT NULL,
 	area 			CHAR(10)	    NOT NULL,
 	fecha_pago 		DATE  			NOT NULL,
-	fecha_creac     DATE 			NOT NULL,		
+	fecha_creac     DATE 			NOT NULL,
 	PRiMARY KEY(numero)
 );
 #######################
@@ -459,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesada`
 	descripcion 	CHAR(250)	    NOT NULL,
 	area 			CHAR(10)	    NOT NULL,
 	fecha_pago 		DATE  			NOT NULL,
-	fecha_creac     DATE 			NOT NULL,		
+	fecha_creac     DATE 			NOT NULL,
 	PRiMARY KEY(numero)
 );
 #######################
@@ -480,13 +480,27 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesadadetalle`
 #######################
 CREATE TABLE IF NOT EXISTS `vacacionprocesadadeduccion`
 (
-    numero 		    INT(10)		  NOT NULL AUTO_INCREMENT,
+    numero 		    	INT(10)		  	NOT NULL AUTO_INCREMENT,
     ced_empleado    CHAR(10)      NOT NULL,
-	cod_deduccion 	CHAR(10)	  NOT NULL AUTO_INCREMENT,
+		cod_deduccion 	CHAR(10)	  	NOT NULL,
     descripcion     CHAR(250)     NOT NULL,
-	cantidad    	CHAR(250)	  NOT NULL,
+		cantidad    		CHAR(250)	  	NOT NULL,
     monto           DECIMAL(10,2) NOT NULL,
 	PRiMARY KEY(numero,ced_empleado,cod_deduccion)
+);
+
+#######################
+# 1.34 CREATE TABLE aportefaov
+#######################
+CREATE TABLE IF NOT EXISTS `aportefaov`
+(
+    numero 		    	INT(10)		  	NOT NULL AUTO_INCREMENT,
+    ced_empleado    CHAR(10)      NOT NULL,
+		descripcion	 		CHAR(250)	  	NOT NULL,
+    aporte_emp      DECIMAL(10,2) NOT NULL,
+		aporte_patron   DECIMAL(10,2)	NOT NULL,
+	  fecha_creac    	DATE				  NULL,
+	PRiMARY KEY(numero,ced_empleado)
 );
 
 /*
