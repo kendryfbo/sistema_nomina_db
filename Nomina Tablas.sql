@@ -71,13 +71,13 @@ CREATE TABLE IF NOT EXISTS `clasificacion`
 #######################
 CREATE TABLE IF NOT EXISTS `deduccionconcepto`
 (
-	codigo			CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,
-	forma			CHAR(50)		NOT NULL,				# % del sueldo, valor fijo
-	valor			DECIMAL(10,2)	NOT NULL DEFAULT 1,		# valor en porcentaje o fijo
-	formula 		CHAR(50)		NULL,
+	codigo			CHAR(10)			NOT NULL,
+	descripcion	CHAR(100)			NOT NULL,
+	forma				CHAR(50)			NOT NULL,				# % del sueldo, valor fijo
+	valor				DECIMAL(10,2)	NOT NULL DEFAULT 1,		# valor en porcentaje o fijo
+	formula 		CHAR(50)			NULL,
 	activo 			TINYINT(1)		NOT NULL DEFAULT 0,
-	fechacreac 		DATE 			NOT NULL,
+	fechacreac 	DATE 					NOT NULL,
 	PRiMARY KEY(codigo)
 );
 
@@ -86,14 +86,14 @@ CREATE TABLE IF NOT EXISTS `deduccionconcepto`
 #######################
 CREATE TABLE IF NOT EXISTS `asignacionconcepto`
 (
-	codigo			CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,
-	forma			CHAR(50)		NOT NULL,		# % del sueldo, valor fijo
-	valor			DECIMAL(10,2)	NOT NULL DEFAULT 1,		# valor en porcentaje o fijo
-	formula 		CHAR(50)		NULL,
+	codigo			CHAR(10)			NOT NULL,
+	descripcion	CHAR(100)			NOT NULL,
+	forma				CHAR(50)			NOT NULL,		# % del sueldo, valor fijo
+	valor				DECIMAL(10,2)	NOT NULL DEFAULT 1,		# valor en porcentaje o fijo
+	formula 		CHAR(50)			NULL,
 	prima 			TINYINT(1)		NOT NULL DEFAULT 0,
 	activo 			TINYINT(1)		NOT NULL DEFAULT 0,
-	fechacreac 		DATE 			NOT NULL,
+	fechacreac 	DATE 					NOT NULL,
 	PRiMARY KEY(codigo)
 );
 
@@ -103,9 +103,9 @@ CREATE TABLE IF NOT EXISTS `asignacionconcepto`
 CREATE TABLE IF NOT EXISTS `deduccionemp`
 (
 	ced_emp		    CHAR(50)		NOT NULL,
-	cod_deduccion 	CHAR(10)		NOT NULL,
-	tipo 			CHAR(50)		NOT NULL,				# fija o unica
-	cantidad		INT(10)			NOT NULL DEFAULT 1,
+	cod_deduccion 	CHAR(10)	NOT NULL,
+	tipo 			CHAR(50)				NOT NULL,				# fija o unica
+	cantidad		INT(10)				NOT NULL DEFAULT 1,
 
 	PRiMARY KEY(cod_deduccion,ced_emp)
 );
@@ -117,9 +117,9 @@ CREATE TABLE IF NOT EXISTS `asignacionemp`
 (
 
 	ced_emp		    CHAR(50)		NOT NULL,
-	cod_asignacion 	CHAR(10)		NOT NULL,
-	tipo 			CHAR(50)		NOT NULL,
-	cantidad		INT(10)			NOT NULL DEFAULT 1,
+	cod_asignacion 	CHAR(10)	NOT NULL,
+	tipo 			CHAR(50)				NOT NULL,
+	cantidad		INT(10)				NOT NULL DEFAULT 1,
 	PRiMARY KEY(cod_asignacion,ced_emp)
 );
 
@@ -130,13 +130,12 @@ CREATE TABLE IF NOT EXISTS `nominamodel`
 (
 	codigo 		    CHAR(10)		NOT NULL,
 	descripcion 	CHAR(100)		NOT NULL,
-#	tipo 		CHAR(50)		NOT NULL,					# Mensual, quincenal, semanal, diaria , etc...
-	dias 		    INT(10)			NOT NULL,
-	sueldo_porc	    INT (10)		NOT NULL DEFAULT 100,		# porcentaje de sueldo a cancelar
-	deducc_porc	    INT (10)		NOT NULL DEFAULT 100,		# porcentaje de deducciones a cancelar
-	deducciones 	TINYINT(1)		NOT NULL DEFAULT 0,
+	dias 		    	INT(10)			NOT NULL,
+	sueldo_porc	  INT (10)		NOT NULL DEFAULT 100,		# porcentaje de sueldo a cancelar
+	deducc_porc	  INT (10)		NOT NULL DEFAULT 100,		# porcentaje de deducciones a cancelar
+	deducciones 	TINYINT(1)	NOT NULL DEFAULT 0,
 	asignac_porc	INT (10)		NOT NULL DEFAULT 100,		# porcentaje de asignaciones a cancelar
-	asignaciones 	TINYINT(1) 		NOT NULL DEFAULT 0,
+	asignaciones 	TINYINT(1) 	NOT NULL DEFAULT 0,
 	PRIMARY KEY (codigo)
 
 );
@@ -146,17 +145,17 @@ CREATE TABLE IF NOT EXISTS `nominamodel`
 #######################
 CREATE TABLE IF NOT EXISTS `nominacargada`
 (
-	numero			INT(100)		NOT NULL AUTO_INCREMENT,		# Numero de la nomina
-	descripcion 	CHAR(100) 		NOT NULL,
-	fecha_pago		DATE 			NOT NULL,
-	fecha_desde		DATE 			NOT NULL,
-	fecha_hasta		DATE 			NOT NULL,
-	porc_salario 	DECIMAL(10,2) 	NOT NULL,
+	numero					INT(100)				NOT NULL AUTO_INCREMENT,		# Numero de la nomina
+	descripcion 		CHAR(100) 			NOT NULL,
+	fecha_pago			DATE 						NOT NULL,
+	fecha_desde			DATE 						NOT NULL,
+	fecha_hasta			DATE 						NOT NULL,
+	porc_salario 		DECIMAL(10,2) 	NOT NULL,
 	porc_deduccion	DECIMAL(10,2) 	NOT NULL,
 	porc_asignacion DECIMAL(10,2) 	NOT NULL,
-	dias 			INT(10)			NOT NULL DEFAULT 1,
-	cod_usuario		CHAR(10) 		NOT NULL,
-	fecha_creac		DATE 			NOT NULL,
+	dias 						INT(10)					NOT NULL DEFAULT 1,
+	cod_usuario			CHAR(10) 				NOT NULL,
+	fecha_creac			DATE 						NOT NULL,
 	PRIMARY KEY (numero)
 );
 
@@ -165,10 +164,10 @@ CREATE TABLE IF NOT EXISTS `nominacargada`
 #######################
 CREATE TABLE IF NOT EXISTS `nominacargadadetalle`
 (
-	numero			INT(10)			NOT NULL,			# Numero de la nomina
-	ced_emp 		CHAR(10)		NOT NULL, 			# id Empleado
+	numero					INT(10)					NOT NULL,			# Numero de la nomina
+	ced_emp 				CHAR(10)				NOT NULL, 			# id Empleado
 	salariogeneral	DECIMAL(10,2) 	NOT NULL DEFAULT 0,
-	salario			DECIMAL(10,2) 	NOT NULL DEFAULT 0,
+	salario					DECIMAL(10,2) 	NOT NULL DEFAULT 0,
 
 	PRIMARY KEY (numero,ced_emp)
 );
@@ -178,12 +177,12 @@ CREATE TABLE IF NOT EXISTS `nominacargadadetalle`
 #######################
 CREATE TABLE IF NOT EXISTS `deduccioncargada`
 (
-	numero			INT(10)			NOT NULL,
-	cod_deduc 		CHAR(10)		NOT NULL,
-	ced_emp		    CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,
-	cantidad		INT(10)			NOT NULL DEFAULT 1,
-	valor			DECIMAL(10,2)		NOT NULL,
+	numero				INT(10)				NOT NULL,
+	cod_deduc 		CHAR(10)			NOT NULL,
+	ced_emp		    CHAR(10)			NOT NULL,
+	descripcion		CHAR(100)			NOT NULL,
+	cantidad			INT(10)				NOT NULL DEFAULT 1,
+	valor					DECIMAL(10,2)	NOT NULL,
 	PRIMARY KEY(numero,cod_deduc,ced_emp)
 );
 
@@ -192,13 +191,13 @@ CREATE TABLE IF NOT EXISTS `deduccioncargada`
 #######################
 CREATE TABLE IF NOT EXISTS `asignacioncargada`
 (
-	numero			INT(10)			NOT NULL,
-	cod_asign 		CHAR(10)		NOT NULL,
-	ced_emp		    CHAR(10)		NOT NULL,
-	descripcion		CHAR(100)		NOT NULL,
-	prima 			TINYINT(1)		NOT NULL DEFAULT 0,
-	cantidad		INT(10)			NOT NULL DEFAULT 1,
-	valor			DECIMAL(10,2)	NOT NULL,
+	numero				INT(10)				NOT NULL,
+	cod_asign 		CHAR(10)			NOT NULL,
+	ced_emp		    CHAR(10)			NOT NULL,
+	descripcion		CHAR(100)			NOT NULL,
+	prima 				TINYINT(1)		NOT NULL DEFAULT 0,
+	cantidad			INT(10)				NOT NULL DEFAULT 1,
+	valor					DECIMAL(10,2)	NOT NULL,
 	PRIMARY KEY(numero,cod_asign,ced_emp)
 );
 
