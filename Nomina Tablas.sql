@@ -489,17 +489,16 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesadadeduccion`
 );
 
 #######################
-# 1.34 CREATE TABLE aportefaov
+# 1.34 CREATE TABLE aportePrestacion
 #######################
-CREATE TABLE IF NOT EXISTS `aportefaov`
+CREATE TABLE IF NOT EXISTS `aporteprestacion`
 (
-    numero 		    	INT(10)		  	NOT NULL AUTO_INCREMENT,
-    ced_empleado    CHAR(10)      NOT NULL,
-		descripcion	 		CHAR(250)	  	NOT NULL,
-    aporte_emp      DECIMAL(10,2) NOT NULL,
-		aporte_patron   DECIMAL(10,2)	NOT NULL,
-	  fecha_creac    	DATE				  NULL,
-	PRiMARY KEY(numero,ced_empleado)
+    numero 		    INT(10)		  	NOT NULL AUTO_INCREMENT,
+    ced_empleado  CHAR(10)      NOT NULL,
+		descripcion		CHAR(250)	  	NOT NULL,
+    aporte    	  DECIMAL(10,2) NOT NULL,
+	  fecha_creac  	DATE				  NULL,
+		PRiMARY KEY(numero,ced_empleado)
 );
 
 /*
