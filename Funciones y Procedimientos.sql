@@ -86,7 +86,7 @@ ELSEIF (pago = 'MES') THEN
 
 SET sdia = valor / 30;
 SET ssemana = sdia * 7;
-SET smes = sdia * 30;
+SET smes = valor;
 
 END IF;
 
