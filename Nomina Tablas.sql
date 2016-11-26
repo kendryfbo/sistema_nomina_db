@@ -8,7 +8,7 @@ USE `nomina`;
 CREATE TABLE IF NOT EXISTS `empleado`
 (
 	cedula						CHAR(10) 			NOT NULL,
-	nombres			  		CHAR(50)			NOT NULL,
+	nombres			  			CHAR(50)			NOT NULL,
 	apellidos					CHAR(50)			NOT NULL,
 	rif				    		CHAR(50)			NULL,
 	fechanac					DATE 					NOT NULL,
@@ -389,9 +389,10 @@ CREATE TABLE IF NOT EXISTS `anticipodetalle`
 	id 			    INT(10)		    NOT NULL,
 	cedula 			CHAR(10)		NOT NULL,
 	monto 			DECIMAL(10,2)	NOT NULL,
-	procesado 		TINYINT(1) 		NOT NULL DEFAULT 0;
+	procesado 		TINYINT(1) 		NOT NULL DEFAULT 0,
 	PRiMARY KEY(id,cedula)
 );
+
 #######################
 # 1.26 CREATE TABLE detalleanticipo
 #######################
@@ -401,6 +402,7 @@ CREATE TABLE IF NOT EXISTS `anticipotemp`
 	monto 			DECIMAL(10,2)	NOT NULL,
 	PRiMARY KEY(cedula)
 );
+
 #######################
 # 1.27 CREATE TABLE vacacioncargada
 #######################
@@ -435,6 +437,7 @@ CREATE TABLE IF NOT EXISTS `vacacioncargadadetalle`
 	monto_ajuste    DECIMAL(10,2) NOT NULL,
 	PRiMARY KEY(numero)
 );
+
 #######################
 # 1.30 CREATE TABLE vacacioncargadadeduccion
 #######################
@@ -493,12 +496,13 @@ CREATE TABLE IF NOT EXISTS `vacacionprocesadadeduccion`
 #######################
 CREATE TABLE IF NOT EXISTS `aporteprestacion`
 (
-    numero 		    INT(10)		  	NOT NULL AUTO_INCREMENT,
-    ced_empleado  CHAR(10)      NOT NULL,
-		descripcion		CHAR(250)	  	NOT NULL,
-    aporte    	  DECIMAL(10,2) NOT NULL,
-	  fecha_creac  	DATE				  NULL,
-		PRiMARY KEY(numero,ced_empleado)
+    	numero 		INT(10)		NOT NULL AUTO_INCREMENT,
+    	ced_empleado  	CHAR(10)      	NOT NULL,
+	descripcion	CHAR(250)	NOT NULL,
+    	aporte    	DECIMAL(10,2) 	NOT NULL,
+	nomina		INT(10)		NULL,
+	fecha_creac  	DATE		NULL,
+	PRiMARY KEY(numero,ced_empleado)
 );
 
 /*
