@@ -35,6 +35,9 @@ INSERT IGNORE INTO `empresa` (`codigo`,`descripcion`,`rif`,`direccion`,`tlf1`,`t
 
 INSERT IGNORE INTO `area` (`codigo`,`descripcion`,`activo`,`fechacreac`) VALUES
 ('DOCENT','DIR. DOCENTE',1,CURDATE()),
+('PDEI','P.D. EDUCACION INICIAL',1,CURDATE()),
+('PDEP','P.D. EDUCACION PRIMARIA',1,CURDATE()),
+('EDUMED','EDUCACION MEDIA GENERAL',1,CURDATE()),
 ('ADMINI','ADMINISTRATIVO',1,CURDATE()),
 ('SUPLTE','SUPLENTE',1,CURDATE()),
 ('OBRERO','OBRERO',1,CURDATE());
